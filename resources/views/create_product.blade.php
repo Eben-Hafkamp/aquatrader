@@ -1,9 +1,9 @@
 @extends('templates.main')
 
 @section('content')
-			<h2>Contact</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse suscipit cupiditate quo consectetur impedit sit repellendus dolores nemo. Fuga, nostrum!</p>
-			<form action="">
+			<h2>Add New Product</h2>
+			<p>blallendus dolores nemo. Fuga, nostrum!</p>
+			{!! Form::open(array('url' => 'foo/bar')) !!}
 				<fielset>
 					<label for="">Name.</label>
 					<input type="text" name="" id="">
@@ -16,5 +16,5 @@
 
 					<input type="submit" value="Send">
 				</fielset>
-			</form>
+			{!! Form::close() !!}
 @stop

@@ -59,9 +59,12 @@ Route::get('/', function () {
       return view('contact');
     });
 
-    Route::get('types', function () {
-      $type = \App\Models\Type::find(1);
+    Route::get('types/{id}', function ($id) { // {} id is determined by the user
+      $type = \App\Models\Type::find($id);
       // return view('types', ['goldfish'=>$type]);
       return view('types', compact("type")); //use compact to avoid using keys
+    });
 
+    Route::get('products/create', function () {
+      return view('create_product');
     });
