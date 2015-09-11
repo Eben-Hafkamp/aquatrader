@@ -41,8 +41,8 @@ Route::get('/', function () {
     //   'email' => 'JaiLovesTea@teamail.com',
     //   'password' => '1'
     //   ]);
-    //
-    //   return $user;
+
+      // return $user;
 
     // return view('welcome');
 
@@ -68,3 +68,37 @@ Route::get('/', function () {
     Route::get('products/create', function () {
       return view('create_product');
     });
+
+    Route::post('products', function (\App\Http\Requests\CreateProductRequest $request) { //request is dependency injection
+      $product = \App\Models\Product::create($request->all());
+      return redirect('types/'.$product->type->id);
+    });
+
+    Route::get('products/{id}/edit', function ($id) {
+      $product = \App\Models\Product::find($id);
+      return view('update_product', compact("product"));
+    });
+
+    Route::put('products/{id}', function ($id, \App\Http\Requests\UpdateProductRequest $request) { //dependency injection with required fields
+      $product = \App\Models\Product::find($id);
+      $product->fill($request->all()); //data as array and sanitized
+      $product->save();
+      return redirect('types/'.$product->type->id);
+    });
+
+    Route::get('users/create', function () {
+      return view('create_user');
+    });
+
+    Route::get('users/{id}', function ($id) {
+        $user = \App\Models\User::find($id);
+        return view('users', compact('user'));
+    });
+
+
+
+    // Route::get('users/{id}/edit', function ($id) {
+    //     $user = \App\Models\User::find($id);
+    //     // return view('update_user', ['user'=>$user]);
+    //     return $user;
+    // });

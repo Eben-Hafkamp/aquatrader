@@ -1,10 +1,10 @@
 @extends('templates.main')
 
 @section('content')
-			<h2>Add New Product</h2>
+			<h2>Update Product</h2>
 			<p>blallendus dolores nemo. Fuga, nostrum!</p>
 			<!-- creates a token and gives it a unique value to protect your form from hackers -->
-			{!! Form::open(array('url' => 'products')) !!}
+			{!! Form::model($product, array('url' => 'products/'.$product->id, 'method'=>'put')) !!}
 				<fielset>
 					{!! Form::label('name', 'Product Name') !!}
 					{!! Form::text('name') !!}
@@ -17,10 +17,6 @@
 					{!! Form::label('price', 'Price') !!}
 					{!! Form::text('price') !!}
 					{!! $errors->first('price', '<p class="error">:message</p>') !!}
-
-					{!! Form::label('photo', 'Photo') !!}
-					{!! Form::text('photo', 'shubunkin.jpg') !!}
-					{!! $errors->first('photo', '<p class="error">:message</p>') !!}
 
 					{!! Form::label('type_id', 'Product Type') !!}
 					{!! Form::select('type_id', \App\Models\Type::lists('name', 'id')) !!}
