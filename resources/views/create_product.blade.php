@@ -4,7 +4,7 @@
 			<h2>Add New Product</h2>
 			<p>blallendus dolores nemo. Fuga, nostrum!</p>
 			<!-- creates a token and gives it a unique value to protect your form from hackers -->
-			{!! Form::open(array('url' => 'products')) !!}
+			{!! Form::open(['url' => 'products', 'files'=>true]) !!}
 				<fielset>
 					{!! Form::label('name', 'Product Name') !!}
 					{!! Form::text('name') !!}
@@ -19,7 +19,7 @@
 					{!! $errors->first('price', '<p class="error">:message</p>') !!}
 
 					{!! Form::label('photo', 'Photo') !!}
-					{!! Form::text('photo', 'shubunkin.jpg') !!}
+					{!! Form::file('photo') !!}
 					{!! $errors->first('photo', '<p class="error">:message</p>') !!}
 
 					{!! Form::label('type_id', 'Product Type') !!}

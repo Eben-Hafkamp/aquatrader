@@ -51,6 +51,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/*|--------------------------------------------------------------------------
+| GETTING URLS
+|--------------------------------------------------------------------------*/
+
     Route::get('about', function () {
       return view('about');
     });
@@ -69,8 +74,21 @@ Route::get('/', function () {
       return view('create_product');
     });
 
+/*|--------------------------------------------------------------------------
+| Create a Product then show a product then update a product
+|--------------------------------------------------------------------------*/
+
     Route::post('products', function (\App\Http\Requests\CreateProductRequest $request) { //request is dependency injection
       $product = \App\Models\Product::create($request->all());
+
+      //move file from temp location to productPhtots
+      $fileName = \Carbon\Carbon::now()->timestamp."_photo.jpg";
+
+      $request->file('photo')->move('productphotos', $fileName);
+
+      $product->photo = $fileName;
+      $product->save();
+
       return redirect('types/'.$product->type->id);
     });
 
@@ -86,6 +104,10 @@ Route::get('/', function () {
       return redirect('types/'.$product->type->id);
     });
 
+/*|--------------------------------------------------------------------------
+| GETTING URLS
+|--------------------------------------------------------------------------*/
+
     Route::get('users/create', function () {
       return view('create_user');
     });
@@ -95,10 +117,28 @@ Route::get('/', function () {
         return view('users', compact('user'));
     });
 
+/*|--------------------------------------------------------------------------
+| Create a user then show a user then update a user
+|--------------------------------------------------------------------------*/
 
+    Route::post('users', function (\App\Http\Requests\CreateUserRequest $request) {
+      $user = \App\Models\User::create($request->all());
 
-    // Route::get('users/{id}/edit', function ($id) {
-    //     $user = \App\Models\User::find($id);
-    //     // return view('update_user', ['user'=>$user]);
-    //     return $user;
-    // });
+      //encrypt password
+      $user->password = bcrypt('$user->password');
+      $user->save();
+
+      return redirect('users/'.$user->id);
+    });
+
+    Route::get('users/{id}/edit', function ($id) {
+        $user = \App\Models\User::find($id);
+        return view('update_user', compact('user'));
+    });
+
+    Route::put('users/{id}', function ($id,\App\Http\Requests\UpdateUserRequest $request) {
+        $user = \App\Models\User::find($id);
+        $user->fill($request->all());
+        $user->save();
+        return redirect('users/'.$user->id);
+    });

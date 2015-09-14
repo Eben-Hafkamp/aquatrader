@@ -14,17 +14,20 @@
 					{!! Form::text('lastname') !!}
 					{!! $errors->first('lastname', '<p class="error">:message</p>') !!}
 
-					{!! Form::label('price', 'Price') !!}
-					{!! Form::text('price') !!}
-					{!! $errors->first('price', '<p class="error">:message</p>') !!}
+					{!! Form::label('email', 'Email') !!}
+					{!! Form::text('email') !!}
+					{!! $errors->first('email', '<p class="error">:message</p>') !!}
 
 					{!! Form::label('username', 'Username') !!}
 					{!! Form::text('username') !!}
 					{!! $errors->first('username', '<p class="error">:message</p>') !!}
 
-					{!! Form::label('email', 'Email') !!}
-					{!! Form::text('email') !!}
-					{!! $errors->first('email', '<p class="error">:message</p>') !!}
+					{!! Form::label('password', 'Password') !!}
+					{!! Form::password('password') !!}
+					{!! $errors->first('password') !!}
+
+					{!! Form::label('password_confirmation', 'Confirm Password') !!}
+					{!! Form::password('password_confirmation') !!}
 
 					{!! Form::submit('Submit') !!}
 				</fielset>
