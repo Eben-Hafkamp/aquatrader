@@ -51,10 +51,16 @@
 					<h2 class="logo">Aquatrader <i class="icon-tint"></i></h2>
 
 					@foreach(\App\Models\Type::all() as $type)
-					<li><a href="{{url('types/'.$type->id)}}">{{$type->name}}</a></li> <!-- {{}} dynamic formula. same as oop '..' -->
+					<li><a href="{{url('types/'.$type->id)}}">{{$type->name}}</a></li>
 					@endforeach
-					<li class="clear"><a href="">Account <i class="icon-user"></i></a></li>
-					<li><a href="">Login <i class="icon-lock"></i></a></li>
+
+					@if(Auth::check())
+						<li class="clear"><a href="{{url('users/'.Auth::user()->id)}}">Account <i class="icon-user"></i></a></li>
+						<li><a href="{{url('logout')}}">Logout <i class="icon-lock"></i></a></li>
+					@else
+						<li><a href="{{url('login')}}">Login <i class="icon-lock"></i></a></li>
+					@endif
+					<li><a href="{{url('users/create')}}" >Sign Up</a></li>
 					<li><a href="" >2 items <i class="icon-shopping-cart"></i></a></li>
 					<li><a href="">About</a></li>
 					<li><a href="">Contact</a></li>

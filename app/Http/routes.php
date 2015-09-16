@@ -56,13 +56,11 @@ Route::get('/', function () {
 | GETTING URLS
 |--------------------------------------------------------------------------*/
 
-    Route::get('about', function () {
-      return view('about');
-    });
+    Route::get('about', 'PagesController@showAbout');
+      // return view('about'); // function moved to controller
 
-    Route::get('contact', function () {
-      return view('contact');
-    });
+    Route::get('contact', 'PagesController@showContact');
+      // return view('contact'); // function moved to controller
 
     Route::get('types/{id}', function ($id) { // {} id is determined by the user
       $type = \App\Models\Type::find($id);
@@ -70,75 +68,80 @@ Route::get('/', function () {
       return view('types', compact("type")); //use compact to avoid using keys
     });
 
-    Route::get('products/create', function () {
-      return view('create_product');
-    });
+    // Route::get('products/create', 'ProductsController@create');
+      // return view('create_product');
+
 
 /*|--------------------------------------------------------------------------
 | Create a Product then show a product then update a product
 |--------------------------------------------------------------------------*/
 
-    Route::post('products', function (\App\Http\Requests\CreateProductRequest $request) { //request is dependency injection
-      $product = \App\Models\Product::create($request->all());
+    // Route::post('products', 'ProductsController@store'); //request is dependency injection
+      // $product = \App\Models\Product::create($request->all());
+      //
+      // //move file from temp location to productPhtots
+      // $fileName = \Carbon\Carbon::now()->timestamp."_photo.jpg";
+      //
+      // $request->file('photo')->move('productphotos', $fileName);
+      //
+      // $product->photo = $fileName;
+      // $product->save();
+      //
+      // return redirect('types/'.$product->type->id);
 
-      //move file from temp location to productPhtots
-      $fileName = \Carbon\Carbon::now()->timestamp."_photo.jpg";
+    // Route::get('products/{id}/edit', 'ProductsController@edit');
+      // $product = \App\Models\Product::find($id);
+      // return view('update_product', compact("product"));
 
-      $request->file('photo')->move('productphotos', $fileName);
+    // Route::put('products/{id}', 'ProductsController@update'); //dependency injection with required fields
+      // $product = \App\Models\Product::find($id);
+      // $product->fill($request->all()); //data as array and sanitized
+      // $product->save();
+      // return redirect('types/'.$product->type->id);
 
-      $product->photo = $fileName;
-      $product->save();
-
-      return redirect('types/'.$product->type->id);
-    });
-
-    Route::get('products/{id}/edit', function ($id) {
-      $product = \App\Models\Product::find($id);
-      return view('update_product', compact("product"));
-    });
-
-    Route::put('products/{id}', function ($id, \App\Http\Requests\UpdateProductRequest $request) { //dependency injection with required fields
-      $product = \App\Models\Product::find($id);
-      $product->fill($request->all()); //data as array and sanitized
-      $product->save();
-      return redirect('types/'.$product->type->id);
-    });
+      Route::resource('products', 'ProductsController');
 
 /*|--------------------------------------------------------------------------
 | GETTING URLS
 |--------------------------------------------------------------------------*/
 
-    Route::get('users/create', function () {
-      return view('create_user');
-    });
+    // Route::get('users/create', function () {
+    //   return view('create_user');
+    // });
 
-    Route::get('users/{id}', function ($id) {
-        $user = \App\Models\User::find($id);
-        return view('users', compact('user'));
-    });
+    // Route::get('users/{id}', function ($id) {
+    //     $user = \App\Models\User::find($id);
+    //     return view('users', compact('user'));
+    // });
 
 /*|--------------------------------------------------------------------------
 | Create a user then show a user then update a user
 |--------------------------------------------------------------------------*/
 
-    Route::post('users', function (\App\Http\Requests\CreateUserRequest $request) {
-      $user = \App\Models\User::create($request->all());
+    // Route::post('users', function (\App\Http\Requests\CreateUserRequest $request) {
+    //   $user = \App\Models\User::create($request->all());
+    //
+    //   //encrypt password
+    //   $user->password = bcrypt('$user->password');
+    //   $user->save();
+    //
+    //   return redirect('users/'.$user->id);
+    // });
 
-      //encrypt password
-      $user->password = bcrypt('$user->password');
-      $user->save();
+    // Route::get('users/{id}/edit', function ($id) {
+    //     $user = \App\Models\User::find($id);
+    //     return view('update_user', compact('user'));
+    // });
 
-      return redirect('users/'.$user->id);
-    });
+    // Route::put('users/{id}', function ($id,\App\Http\Requests\UpdateUserRequest $request) {
+    //     $user = \App\Models\User::find($id);
+    //     $user->fill($request->all());
+    //     $user->save();
+    //     return redirect('users/'.$user->id);
+    // });
 
-    Route::get('users/{id}/edit', function ($id) {
-        $user = \App\Models\User::find($id);
-        return view('update_user', compact('user'));
-    });
+    Route::resource('users', 'UsersController');
 
-    Route::put('users/{id}', function ($id,\App\Http\Requests\UpdateUserRequest $request) {
-        $user = \App\Models\User::find($id);
-        $user->fill($request->all());
-        $user->save();
-        return redirect('users/'.$user->id);
-    });
+    Route::get('login', 'LoginController@showLoginForm');
+    Route::post('login', 'LoginController@processLogin');
+    Route::get('logout', 'LoginController@logout');
