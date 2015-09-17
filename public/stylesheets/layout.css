@@ -320,7 +320,6 @@ ul li {position:relative; font-size: 14px;}
 	    font-style: normal; }
 
 */
-			@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 			.btn {
 			  display: inline-block;
 			  *display: inline;
@@ -419,17 +418,9 @@ ul li {position:relative; font-size: 14px;}
 			}
 
 			.btn-block {
-			  width: 100%;
+			  width: 108%;
+				margin-top: .5em;
 			  display: block;
-			}
-
-			.login {
-			  position: absolute;
-			  top: 50%;
-			  left: 50%;
-			  margin: -150px 0 0 -150px;
-			  width: 300px;
-			  height: 300px;
 			}
 
 			.login h1 {
@@ -441,7 +432,7 @@ ul li {position:relative; font-size: 14px;}
 
 			.login {
 			  position: absolute;
-			  top: 50%;
+			  top: 30%;
 			  left: 50%;
 			  margin: -150px 0 0 -150px;
 			  width: 300px;
@@ -449,6 +440,7 @@ ul li {position:relative; font-size: 14px;}
 			}
 
 			.login h1 {
+				margin-bottom: 1em;
 			  color: #fff;
 			  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 			  letter-spacing: 1px;
