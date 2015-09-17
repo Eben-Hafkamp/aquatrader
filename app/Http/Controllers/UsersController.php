@@ -12,6 +12,7 @@ class UsersController extends Controller
 
   public function __construct () {
     $this->middleware('auth', ['except' => ['create', 'store']]); //for anything other than than the create(show form) and submit apply the authentication
+    $this->middleware('account', ['except' => ['create', 'store']]);
   }
     /**
      * Display a listing of the resource.
