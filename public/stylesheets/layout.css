@@ -34,7 +34,7 @@ rgb(105,93,70)
 }
 
 h4{
-	color: rgb(0,112,255);
+	color: orange;
 }
 h2{
 	padding-top: 0.5em;
@@ -42,7 +42,8 @@ h2{
 
 
 i{
-	color:rgb(255,113,44);
+	color:white;
+	font-size: 1em;
 }
 
 a{
@@ -56,13 +57,19 @@ img{
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
 	border-radius: 0.25em;
+	box-shadow: 0px -8px 61px -18px rgba(0,0,0,0.75);
 
 }
+
+ul i {position: absolute; top:13px; left:5px; color: white; font-size: 12px;}
+ul li {position:relative; font-size: 14px;}
 
 .logo{
 	white-space:nowrap;
 	/*overflow: hidden;*/
-	color: rgb(0,112,255);
+	background: -webkit-linear-gradient(top, rgba(79,153,227,1) 0%, rgba(18,70,130,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
 }
 .container{
@@ -74,14 +81,14 @@ img{
 }
 
 .price{
-	font-size: 2em;
+	height: 2.5em;
 	position: absolute;
 	top: 0;
 	left: 0;
 	display: block;
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(0,0,0,0.7);
 	width: 100%;
-	line-height: 1.5em;
+	line-height: 2.5em;
 	text-align: right;
 	padding-right: 0.5em;
 	-webkit-box-sizing: border-box;
@@ -89,36 +96,22 @@ img{
 	box-sizing: border-box;
 	z-index: 10;
 	border: 1px transparent solid;
-
+	color: white;
 }
 
 .addtocart{
-	font-size: 2em;
+	/*font-size: 2em;*/
 	position: absolute;
-	top: 0;
-	left: 0;
-	border:none;
-	padding:0 0.5em;
-	margin:0;
-	/*padding-left: 0.5em;*/
+	top: 10px;
+	left: 15px;
 	z-index: 20;
-	background: none;
-	display: block;
-	line-height: 1.5em;
-	border: 1px transparent solid;
-
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 	border-radius: 0;
-
 	-moz-border-top-left-radius: 0.125em;
 	-webkit-border-top-left-radius: 0.125em;
 	border-top-left-radius: 0.125em;
-
-
-
 }
-
 
 .main>article{
 	margin-bottom: 2em;
@@ -128,7 +121,6 @@ img{
 .cart{
 	display: table;
 	width: 80%;
-
 }
 
 .cart>div{
@@ -138,17 +130,11 @@ img{
 .cart>div>span{
 	display: table-cell;
 	line-height: 2em;
-
-
 }
 
 .cart>div:not(:first-child):not(:last-child)>span{
 	border-bottom: thin dotted rgb(200,200,200);
-
 }
-
-
-
 
 /* #Media Queries
 ================================================== */
@@ -157,34 +143,15 @@ img{
 		display: block;
 		line-height: 1.61em;
 		text-transform:uppercase;
-		padding: 0.25em 0 0.25em 2em;
+		padding: .5em 0 .5em 2em;
 		border:thin solid transparent;
-		border-bottom: thin dotted rgb(200,200,200);
+		border-bottom: thin solid rgba(255,255,255,.4);
 		color: white;
-
-		-webkit-transition: all 0.3s;
-		-moz-transition: all 0.3s;
-		-ms-transition: all 0.3s;
-		-o-transition: all 0.3s;
-		transition: all 0.3s;
+		transition: background 0.3s;
 	}
 
 	ul a:hover, .button{
-		background: white; /* Old browsers */
-		background: white -moz-linear-gradient(top, rgba(255,255,255,.2) 0%, rgba(0,112,255, 0.5) 100%); /* FF3.6+ */
-		background: white -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.2)), color-stop(100%,rgba(0,112,255, 0.5))); /* Chrome,Safari4+ */
-		background: white -webkit-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,112,255, 0.5) 100%); /* Chrome10+,Safari5.1+ */
-		background: white -o-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,112,255, 0.5) 100%); /* Opera11.10+ */
-		background: white -ms-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,112,255, 0.5) 100%); /* IE10+ */
-		background: white linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,112,255, 0.5) 100%); /* W3C */
-		border:thin solid #aaa;
-		border-top:thin solid #ccc;
-		border-left:thin solid #ccc;
-		-moz-border-radius: 0.25em;
-		-webkit-border-radius: 0.25em;
-		border-radius: 0.25em;
-
-
+		background: -webkit-linear-gradient(top, rgba(255,175,75,1) 0%, rgba(255,146,10,0.75) 100%);
 	}
 
 /*Tablet inclusive*/
@@ -456,31 +423,20 @@ img{
 			  display: block;
 			}
 
-			* {
-			  -webkit-box-sizing: border-box;
-			  -moz-box-sizing: border-box;
-			  -ms-box-sizing: border-box;
-			  -o-box-sizing: border-box;
-			  box-sizing: border-box;
+			.login {
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  margin: -150px 0 0 -150px;
+			  width: 300px;
+			  height: 300px;
 			}
 
-			html {
-			  width: 100%;
-			  height: 100%;
-			  overflow: hidden;
-			}
-
-			body {
-			  width: 100%;
-			  height: 100%;
-			  font-family: 'Open Sans', sans-serif;
-			  background: #092756;
-			  background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-			  background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-			  background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-			  background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-			  background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
-			  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
+			.login h1 {
+			  color: #fff;
+			  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			  letter-spacing: 1px;
+			  text-align: center;
 			}
 
 			.login {
@@ -499,7 +455,7 @@ img{
 			  text-align: center;
 			}
 
-			.new-form {
+			input {
 			  width: 100%;
 			  margin-bottom: 10px;
 			  background: rgba(0, 0, 0, 0.3);
@@ -519,6 +475,6 @@ img{
 			  transition: box-shadow .5s ease;
 			}
 
-			.new-form:focus {
+			input:focus {
 			  box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px rgba(255, 255, 255, 0.2);
 			}

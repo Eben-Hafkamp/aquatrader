@@ -9,7 +9,7 @@
   {!! $errors->first('username', '<p class="error">:message</p>') !!}
   {!! Form::password('password') !!}
   {!! $errors->first('password', '<p class="error">:message</p>') !!}
-  {!! Form::submit('Submit') !!}
+  {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block btn-large']) !!}
   {!! Form::close() !!}
 	{{Session::get("message")}}
 </div>

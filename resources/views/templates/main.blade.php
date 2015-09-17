@@ -55,13 +55,13 @@
 					@endforeach
 
 					@if(Auth::check())
-						<li class="clear"><a href="{{url('users/'.Auth::user()->id)}}">Account <i class="icon-user"></i></a></li>
-						<li><a href="{{url('logout')}}">Logout <i class="icon-lock"></i></a></li>
+						<li class="clear"><i class="icon-user"></i><a href="{{url('users/'.Auth::user()->id)}}">Account</a></li>
+						<li><i class="icon-lock"></i><a href="{{url('logout')}}">Logout</a></li>
 					@else
-						<li><a href="{{url('login')}}">Login <i class="icon-lock"></i></a></li>
+						<li><i class="icon-lock"></i><a href="{{url('login')}}">Login</a></li>
 					@endif
 					<li><a href="{{url('users/create')}}" >Sign Up</a></li>
-					<li><a href="" >2 items <i class="icon-shopping-cart"></i></a></li>
+					<li><i class="icon-shopping-cart"></i><a href="" >2 items</a></li>
 					<li><a href="">About</a></li>
 					<li><a href="">Contact</a></li>
 
