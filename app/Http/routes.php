@@ -147,3 +147,5 @@ Route::get('/', function () {
     Route::get('logout', 'LoginController@logout');
 
     Route::get('cart', 'CartController@showcart');
+    Route::post('cartItems', 'CartController@addItem');
+    Route::post('orders', 'CartController@checkOut');

@@ -27,11 +27,17 @@ rgb(105,93,70)
 
 /* #Page Styles
 ================================================== */
+/*.group {position: fixed;}*/
+nav {position: fixed;}
 .group:after{
 	content:"";
 	display: table;
 	clear:both;
 }
+
+span {color:white;}
+
+article .btn-block {width:102%; margin-top:2em;}
 
 h4{
 	color: orange;

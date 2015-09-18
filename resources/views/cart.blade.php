@@ -21,7 +21,9 @@
     </div>
   </div>
 
-  <form method="POST" action="">
+  {!! Form::open(['url'=>'orders']) !!}
+  <!-- <form method="POST" action="orders"> -->
     <input type="submit" value="Checkout">
-  </form>
+  <!-- </form> -->
+  {!! Form::close() !!}
 @stop
