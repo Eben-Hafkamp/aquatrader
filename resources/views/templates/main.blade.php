@@ -1,3 +1,6 @@
+<!-- we only want the middle section if it is an ajax request -->
+<!-- (Request::) this is how we allow access to the request using fisad method -->
+@if(Request::ajax() == false)
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -22,6 +25,7 @@
 	<link rel="stylesheet" href={{asset("stylesheets/base.css")}}>
 <!-- 	<link rel="stylesheet" href="stylesheets/skeleton.css"> -->
 	<link rel="stylesheet" href={{asset("stylesheets/layout.css")}}>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -70,18 +74,26 @@
 		</header>
 		<div class="main group">
 
-
+@endif
 
       @yield('content')
 
-
+@if(Request::ajax() == false)
     </div>
 		<footer></footer>
+
+		<div style="display:none;" id="token">{{ csrf_token() }}</div>
 
 	</div><!-- container -->
 
 
 <!-- End Document
 ================================================== -->
+	<script src="{{asset('js/main.js')}}"></script>
+	<script src="{{asset('js/spin.min.js')}}"></script>
+	<script src="{{asset('js/history/html5/jquery.history.js')}}"></script>
+	<script src="{{asset('js/jquery.jeditable.js')}}"></script>
 </body>
 </html>
+
+@endif

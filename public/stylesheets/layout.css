@@ -70,6 +70,23 @@ img{
 ul i {position: absolute; top:13px; left:5px; color: white; font-size: 12px;}
 ul li {position:relative; font-size: 14px;}
 
+.pagination {display: flex; justify-content: space-between; width:20em; margin:auto; padding-bottom: 3em;}
+.pagination li {
+		flex: 1 0 2em;
+		position: relative;
+}
+.pagination li span {
+		width: 4em;
+		margin: auto;
+		position: absolute;
+		left:1.8em;
+		top:.7em;
+		color:gold;
+}
+ul a {
+	border:0 !important;
+}
+
 .logo{
 	white-space:nowrap;
 	/*overflow: hidden;*/

@@ -82,12 +82,19 @@ class UsersController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(\App\Http\Requests\UpdateUserRequest $request, $id)
+    public function update($id)
     {
       $user = \App\Models\User::find($id);
-      $user->fill($request->all());
+      // $user->fill(Request::all());
+      $value = \Request::input("value");
+      $field = \Request::input('field');
+
+      $user->$field = $value;
+
       $user->save();
-      return redirect('users/'.$user->id);
+
+
+      return $value;
     }
 
     /**
